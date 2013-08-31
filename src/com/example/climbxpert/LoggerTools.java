@@ -10,5 +10,11 @@ public class LoggerTools {
 		Toast.makeText(context, message, Toast.LENGTH_LONG).show();
 	}
 	
+	
+	public static void LogToastShort(Context context, CharSequence message)
+	{
+		Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
+	}
+	
 	//TODO: add more log tools
 }

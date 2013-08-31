@@ -67,7 +67,7 @@ public class SearchActivity extends FragmentActivity
 		setupMap();
 		setupLocationClient();
 		locClient.connect();
-		//TODO checl what other initializations are required here
+		//TODO check what other initializations are required here
 	}
 
 
