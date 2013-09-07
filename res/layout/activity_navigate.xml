@@ -8,9 +8,37 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".NavigateActivity" >
 
-    <TextView
+    <ImageView
+        android:id="@+id/arrowImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:src="@drawable/arrowup" />
+
+    <TextView
+        android:id="@+id/zValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/arrowImage"
+        android:layout_toRightOf="@+id/yValue"
+        android:text="X" />
+
+    <TextView
+        android:id="@+id/yValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/arrowImage"
+        android:layout_alignLeft="@+id/arrowImage"
+        android:layout_marginLeft="48dp"
+        android:text="X" />
+
+    <TextView
+        android:id="@+id/xValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/arrowImage"
+        android:layout_alignTop="@+id/arrowImage"
+        android:text="X" />
 
 </RelativeLayout>

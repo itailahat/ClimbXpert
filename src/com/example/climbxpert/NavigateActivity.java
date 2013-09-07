@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.content.Context;
 import android.view.Menu;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class NavigateActivity extends Activity 
 				implements
@@ -58,7 +60,21 @@ public class NavigateActivity extends Activity
 	@Override
 	public void onSensorChanged(SensorEvent se) {
 		// TODO Auto-generated method stub
-		LoggerTools.LogToastShort(this, "new value: " + se.values[0]);
+		
+		ImageView img = (ImageView)findViewById(R.id.arrowImage);
+		TextView xV = (TextView)findViewById(R.id.xValue);
+		TextView yV = (TextView)findViewById(R.id.yValue);
+		TextView zV = (TextView)findViewById(R.id.zValue);
+		
+		
+		xV.setText("X:" + se.values[0]);
+		yV.setText("Y:" + se.values[1]);
+		zV.setText("Z:" + se.values[2]);
+		
+		double Dangle = Math.atan(se.values[1] / se.values[2]);
+		
+		
+		img.setRotation((float)Dangle);
 	}
 
 }
