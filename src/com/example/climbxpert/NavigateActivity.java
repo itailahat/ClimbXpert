@@ -59,7 +59,13 @@ public class NavigateActivity extends Activity
 
 	@Override
 	public void onSensorChanged(SensorEvent se) {
-		// TODO Auto-generated method stub
+		
+		//TODO:	1. get the current location (add a listener for location and store last known location for reference).
+		//		2. x,y coordinates from current location and compared to target
+		//		3. use calculated coordinates to set the compass direction with deviation to the actual magnetic field
+		
+		//TODO:	There seems to be a deviation in the compass direction. 
+		//		It seems that the Z coordinate should also be included in defining the directions.
 		
 		ImageView img = (ImageView)findViewById(R.id.arrowImage);
 		TextView xV = (TextView)findViewById(R.id.xValue);
@@ -69,12 +75,51 @@ public class NavigateActivity extends Activity
 		
 		xV.setText("X:" + se.values[0]);
 		yV.setText("Y:" + se.values[1]);
-		zV.setText("Z:" + se.values[2]);
 		
-		double Dangle = Math.atan(se.values[1] / se.values[2]);
+		float x = se.values[0];
+		float y = se.values[1];
 		
+		
+		double Dangle = getAngle(x,y);
+		
+		
+		zV.setText("Angle:" + Dangle);
 		
 		img.setRotation((float)Dangle);
+	}
+	
+	
+	/**
+	 * Calculate the angle from X and Y coordinates
+	 * @param x The X coordinate
+	 * @param y The Y coordinate
+	 * @return The angle that the coordinates create with the X axis
+	 */
+	public double getAngle(double x, double y)
+	{
+		//TODO Check if there is a simpler way to calculate this
+		double Dangle;
+		if (x<0)
+		{
+			Dangle = 180 - Math.toDegrees(Math.atan((y/x)));
+		}
+		else if (x>0)
+		{
+			Dangle = - Math.toDegrees(Math.atan((y/x)));
+		}
+		else
+		{
+			if (y>=0)
+			{
+				Dangle = 90;
+			}
+			else
+			{
+				Dangle = -90;
+			}
+		}
+		
+		return Dangle;
 	}
 
 }
